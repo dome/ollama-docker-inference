@@ -86,6 +86,38 @@ The above script runs the following script:
 curl -I 'http://localhost:5050/' --header 'apikey: yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R'
 ```
 
+## Add API Key
+
+Add Credentials to `conf/kong.yml`
+
+
+```
+_format_version: "3.0"
+_transform: true
+
+services:
+- name: ollama-api
+  url: http://ollama:11434/
+# ...
+# SKIP
+# ...vvv...NEW API KEY below
+- username: client_999
+  keyauth_credentials:
+  - key: 999+xRxiXdT9leRmT7lpz0CGq38GuEyyOjEWVAI8MUERN9990
+
+```
+
+### Update config
+
+```
+curl http://127.0.0.1:5051/config -F config=@conf/kong.yml
+
+or
+
+bash update-kong-config.sh
+
+```
+
 ```bash
 docker compose down
 ```
