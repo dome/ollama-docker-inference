@@ -1,0 +1,36 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+- name: ollama-api
+  url: http://ollama:11434/
+  routes:
+  - name: ollama-route
+    #hosts:
+    #- api.olla.ma
+    #- api.ollama.cloud
+    paths:
+    - /
+  plugins:
+  - name: key-auth
+    config:
+      key_in_query: false
+      key_names:
+      - apikey
+      - x-ollama-key
+
+consumers:
+- username: client_one
+  keyauth_credentials:
+  - key: yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71R
+  - key: yassif+NiAyz2OCU97Jq2CRY5vzWqEk0jLrIkSd0zSMrviASL71P
+
+- username: client_two
+  keyauth_credentials:
+  - key: yassif+el3yqjAjBXJ0vFqtL98B8gEKCwmmMOU0an3YdDGNhIhRi
+
+- username: client_ten
+  keyauth_credentials:
+  - key: yassif+xRxiXdT9leRmT7lpz0CGq38GuEyyOjEWVAI8MUERNDC1Y
+  - key: yassif+xRxiXdT9leRmT7lpz0CGq38GuEyyOjEWVAI8MUERNDC2Y
+  - key: yassif+xRxiXdT9leRmT7lpz0CGq38GuEyyOjEWVAI8MUERNDC3Y
